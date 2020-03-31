@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Podwyzka
 {
@@ -23,6 +12,31 @@ namespace Podwyzka
         public MainWindow()
         {
             InitializeComponent();
+            buttonYES.Background = Brushes.Green;
+            buttonNO.Background = Brushes.Red;
+        }
+
+        private void ButtonYES_MouseEnter(object sender, MouseEventArgs e)
+        {
+            if(sender.Equals(buttonYES) && buttonYES.Content.ToString() == "TAK")
+            {
+                buttonYES.Content = "NIE";
+                buttonYES.Background = Brushes.Red;
+                buttonNO.Content = "TAK";
+                buttonNO.Background = Brushes.Green;
+            }
+            else if(sender.Equals(buttonNO) && buttonNO.Content.ToString() == "TAK")
+            {
+                buttonNO.Content = "NIE";
+                buttonNO.Background = Brushes.Red;
+                buttonYES.Content = "TAK";
+                buttonYES.Background = Brushes.Green;
+            }
+        }
+
+        private void ButtonYES_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Wiec nie dostaniesz podwyżki!");
         }
     }
 }
